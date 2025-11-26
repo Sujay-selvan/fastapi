@@ -1,0 +1,16 @@
+from pydantic import BaseModel
+from typing import Optional
+
+class UserRequest(BaseModel):
+    name : str 
+    age :int
+    phone_number : str
+    city : Optional[ str ] = None
+
+class UserResponse(BaseModel):
+    id : int
+    age : int 
+    phone_number: str 
+    city : str
+    
+    model_config = {'from_attributes':True}
