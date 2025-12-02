@@ -1,9 +1,9 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
 
-from db import get_db
+from db.db import get_db
 
-import schemas
+import db.schemas as schemas
 
 router = APIRouter(prefix='/users',tags=["users"])
 
@@ -12,4 +12,9 @@ def get_all_users(request:schemas.UserRequest,db= Depends(get_db)):
     return {
         "message":"all users"
     }
+    
+    
+# @router.post('/user')
+# def create_user(request:schemas.UserRequest,db= Depends(get_db)):
+    
     

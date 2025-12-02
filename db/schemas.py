@@ -14,3 +14,7 @@ class UserResponse(BaseModel):
     city : str
     
     model_config = {'from_attributes':True}
+    
+class EmailResponse(BaseModel):
+    name: str
+    to_email: str
