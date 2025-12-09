@@ -18,3 +18,9 @@ class UserResponse(BaseModel):
 class EmailResponse(BaseModel):
     name: str
     to_email: str
+    
+class UpdateRequest(BaseModel):
+    name : Optional[str] = None 
+    age :Optional[ int ] = None
+    phone_number : Optional[ str ] = None
+    city : Optional[ str ] = None

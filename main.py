@@ -1,8 +1,10 @@
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI,HTTPException
 from users.users import router as user_router
 from db.db import Base,engine
-import db.models as models
-from db.schemas import EmailResponse
+import model.models as models
+from schemas.schemas import EmailResponse
 from service import mail
 from template import mail_template
 
@@ -18,3 +20,4 @@ def check_mail(payload:EmailResponse):
     body = mail_template.BODY.format(user_name=payload.name,your_app_name="sujayApp",temp_password='1234')
     return mail.send_email(to_email=payload.to_email,subject=subject,body=body,email_header="no-reply")
     # return 
+    
