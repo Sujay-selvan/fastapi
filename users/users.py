@@ -5,6 +5,7 @@ import schemas.schemas as schemas
 from common_utlis import crud
 from model import models
 from db.db import get_db
+from common_utlis.utils import generate_hash_pwd
 
 router = APIRouter(prefix='/users',tags=["users"])
 
@@ -14,6 +15,7 @@ def get_all_users(db:Session=Depends(get_db)):
             
 @router.post('/user')
 def insert_single_user(payload:schemas.UserRequest,db:Session = Depends(get_db)):
+    payload.password = generate_hash_pwd(payload.password)
     return crud.insert_record(db,models.User,payload)
 
 @router.get('/single-user/{user_id}')

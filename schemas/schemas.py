@@ -3,9 +3,9 @@ from typing import Optional
 
 class UserRequest(BaseModel):
     name : str 
-    age :int
     phone_number : str
-    city : Optional[ str ] = None
+    email: str
+    password : str
 
 class UserResponse(BaseModel):
     id : int
