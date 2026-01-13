@@ -81,3 +81,9 @@ def delete_record(db,model,record_id):
         db.commit()
         return True
     raise HTTPException(status_code=500,detail="record not exist")
+
+def get_record(db,model,filters):
+    """
+    get the record besed on filter_condition
+    """
+    return db.query(model).filter(*filters).first()
